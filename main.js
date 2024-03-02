@@ -96,16 +96,43 @@ gameWindow.onclick = function (e) {
             }
             break;
         case "goldenDragonTrigger":
-            showMessage(heroSpeech, "hey that sure is a goldenDragon... I'm glad it doesn't speak because I have a really serious phobia foor talking goldenDragon!", heroAudio);
+            showMessage(heroSpeech, "Hi there!... oh, why do you look so sad?", heroAudio);
             setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
-            setTimeout(showMessage, 4 * sec, counterSpeech, "I actually CAN talk you know?", counterAudio);
-            setTimeout(showMessage, 8 * sec, heroSpeech, "WHAAAAAAAA!!! NO NO NO I'M SO SCARED!"), heroAudio;
-            setTimeout(showMessage, 12 * sec, counterSpeech, "whoah chill dude, I am just going to help you... If you need a key, look by the graves.", counterAudio);
+            setTimeout(showMessage, 4 * sec, counterSpeech, "oh, hello, I lost my kid. Can you help me find him?", counterAudio);
+            setTimeout(showMessage, 8 * sec, counterAvatar, "He is small, bronze and a bit silly"), heroAudio;
+            setTimeout(showMessage, 12 * sec, counterSpeech, "I can sure help you!", counterAudio);
             setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
             // console.log("TIS I, THE TALKING goldenDragon! oh, what? where the key is? oh yeah it lies with the graves...");
             break;
         default:
             break;
+    }
+
+    switch (e.target.id){
+        case "redMushRoomTriggerOne":
+            console.log ("hmmmm yummy in my tummy, shrooms");
+        break;
+        case "redMushRoomTriggerTwo":
+            console.log ("hmmmm yummy in my tummy, shrooms");
+        break;
+        case "redMushRoomTriggerThree":
+            console.log ("hmmmm yummy in my tummy, shrooms");
+        break;
+        case "redMushRoomTriggerFour":
+            console.log ("hmmmm yummy in my tummy, shrooms");
+        break;
+        case "lostDragonTrigger":
+            console.log ("this is the lost dragon");
+        break;
+        case "goldenDragonTrigger":
+            console.log ("mruwah I'm a big dragon");
+        break;
+        case "gardenBerryTriggerTop":
+            console.log ("this is the top berry bush");
+        break;
+        case "gardenBerryTriggerBottom":
+            console.log ("this is the bottom berry bush");
+        break;
     }
 }
 
@@ -175,7 +202,6 @@ function showMessage(targetBubble, message, targetSound) {
  */
 function hideMessage(targetBubble, targetSound) {
     targetSound.pause();
-    targetBubble.innerText = "..."
     targetBubble.style.opacity = 0;
 };
 

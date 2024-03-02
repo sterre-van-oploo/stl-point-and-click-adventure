@@ -59,6 +59,8 @@ body {
     opacity: 0;
 }
 
+/* !!!ALL COUNTER STUFF */
+
 #counterSpeech {
     width: 300px;
     color: #2d2823;
@@ -74,6 +76,14 @@ body {
 
 /* ! this avatar image still needs to be drawn but I don't feel like drawing rn */
 #counterAvatar {    
+    width: 72px;
+    height: 68px;
+    bottom: 0;
+    right: 0px;
+    opacity: 0;
+}
+
+#lostDragonCounterAvatar{
     width: 72px;
     height: 68px;
     bottom: 0px;
@@ -94,41 +104,92 @@ body {
     z-index: 0;
 }
 
-#squareTree {
+/* #squareTree {
     width: 64px;
     height: 64px;
     background-color: #00ff00;
     left: 400px;
     top: 150px;
     opacity: 1;
-}
+} */
 
-#key {
+/* #key {
     width: 32px;
     height: 32px;
-    left: 86px;
-    top: 450px;
+    left: 23px;
+    top: 493px;
     opacity: 1;
     transition: all 1s ease-in-out;
     background-color: aqua;
+} */
+
+/* !!!ALL TRIGGERS */
+#redMushRoomTriggerOne {
+    width: 14px;
+    height: 17px;
+    left: 417px;
+    top: 31px;
+    /* background-color: #a54f4f; */
 }
 
-#well {
-    width: 64px;
-    height: 64px;
-    left: 288px;
-    top: 96px;
-    background-color: aqua;
+#redMushRoomTriggerTwo{
+    width: 13px;
+    height: 15px;
+    left: 769px;
+    top: 192px;
+    /* background-color: #a54f4f; */
 }
 
-#doorWizardHut {
+#redMushRoomTriggerThree{
     width: 32px;
-    height: 64px;
-    left: 177px;
-    top: 287px;
-    background-color: aqua;
+    height: 25px;
+    left: 767px;
+    top: 440px;
+    /* background-color: #a54f4f; */
 }
 
+#redMushRoomTriggerFour {
+    width: 14px;
+    height: 17px;
+    left: 580px;
+    top: 543px;
+    /* background-color: #a54f4f; */
+}
+
+#goldenDragonTrigger{
+    width: 36px;
+    height: 36px;
+    left: 594px;
+    top: 225px;
+    /* background-color: #eeff00; */
+}
+
+#lostDragonTrigger {
+    width: 21px;
+    height: 21px;
+    left: 20px;
+    top: 493px;
+    /* background-color: #bba058; */
+    z-index: 2;
+}
+
+#gardenBerryTriggerTop{
+    width: 131px;
+    height: 64px;
+    left: 5px;
+    top: 1px;
+    /* background-color: #ff0000; */
+}
+
+#gardenBerryTriggerBottom{
+    width: 89px;
+    height: 64px;
+    left: 5px;
+    top: 97px;
+    /* background-color: #ff0000; */
+}
+
+/* !!!VISUAL NON CLICKEBLE STUFF (IT'S JUST AN ILLUSION) */
 #goldenDragon {
     width: 36px;
     height: 36px;
@@ -137,13 +198,18 @@ body {
     z-index: 1;
 }
 
-#goldenDragonTrigger{
-    width: 36px;
-    height: 36px;
-    left: 594px;
-    top: 225px;
-    /* background-color: aqua; */
+#lostDragon{
+    width: 32px;
+    height: 32px;
+    left: 23px;
+    top: 493px;
+    z-index: 1;
 }
+
+
+
+
+
 
 #hero {
     top: 390px;
