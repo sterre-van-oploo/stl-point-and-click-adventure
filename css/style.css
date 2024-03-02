@@ -3,31 +3,33 @@ body {
     grid-template-columns: auto 800px auto;
     grid-template-rows: auto 608px auto;
     font-family: monospace;
+    background-color: #1b1815;
+    color:#a0978d;
 }
 
 #title {
     grid-column-start: 2;
     grid-row-start: 1;
 } 
-
+ 
 #gameWindow {
     width: 800px;
     height: 608px;
-    background-color: #0022fe;
     grid-column-start: 2;
     grid-row-start: 2;
     position: relative;
 }
 
 #inventoryBox {
-    width: 180px;
-    height: 80px;
+    width: 140px;
+    height: 50px;
     background-color: #3f3530;
     top: 10px;
-    left: 10px;
+    right: 10px;
     color: #a0978d;
     border-style: solid;
     border-color: #a0978d;
+    opacity: 80%;
 }
 
 #dialogBar {
@@ -44,12 +46,13 @@ body {
     width: 72px;
     height: 68px;
     bottom: 0px;
-    left: 0px;    
+    left: 0px;  
+    z-index: 3;  
 }
 
 #heroSpeech {
     width: 300px;
-    color: rgb(45, 40, 35);
+    color: #2d2823;
     font-size: x-large;
     left: 72px;
     top: 7px;
@@ -58,23 +61,25 @@ body {
 
 #counterSpeech {
     width: 300px;
-    color: rgb(45, 40, 35);
+    color: #2d2823;
     font-size: x-large;
     right: 65px;
     top: 7px;
     border-radius: 10px;
     padding: 5px;
-    background-color: rgb(210, 202, 191);
+    background-color: #d2cabf;
     opacity: 0;
 
 }
 
-#counterAvatar {
+/* ! this avatar image still needs to be drawn but I don't feel like drawing rn */
+#counterAvatar {    
     width: 72px;
     height: 68px;
     bottom: 0px;
     right: 0px;
     opacity: 0;
+    z-index: 0;
 }
 
 #brownBar{
@@ -82,6 +87,11 @@ body {
     height: 35px;
     width: 800px;
     background-color: #3f3530;
+    opacity: 80%; 
+    /* border-top: #a0978d; */
+    border-top:#a0978d;
+    border-style: solid;
+    z-index: 0;
 }
 
 #squareTree {
@@ -91,7 +101,6 @@ body {
     left: 400px;
     top: 150px;
     opacity: 1;
-
 }
 
 #key {
@@ -101,6 +110,7 @@ body {
     top: 450px;
     opacity: 1;
     transition: all 1s ease-in-out;
+    background-color: aqua;
 }
 
 #well {
@@ -108,6 +118,7 @@ body {
     height: 64px;
     left: 288px;
     top: 96px;
+    background-color: aqua;
 }
 
 #doorWizardHut {
@@ -115,13 +126,23 @@ body {
     height: 64px;
     left: 177px;
     top: 287px;
+    background-color: aqua;
 }
 
-#statue {
-    width: 32px;
-    height: 64px;
-    left: 704px;
-    top: 287px;
+#goldenDragon {
+    width: 36px;
+    height: 36px;
+    left: 594px;
+    top: 225px;
+    z-index: 1;
+}
+
+#goldenDragonTrigger{
+    width: 36px;
+    height: 36px;
+    left: 594px;
+    top: 225px;
+    /* background-color: aqua; */
 }
 
 #hero {
@@ -130,6 +151,7 @@ body {
     width: 32px;
     height: 32px;
     transition: all 1s ease-in-out;
+    z-index: 2;
 }
 
 #tileMap {}

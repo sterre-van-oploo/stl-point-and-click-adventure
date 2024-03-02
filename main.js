@@ -95,14 +95,14 @@ gameWindow.onclick = function (e) {
                 console.log("dammit, this door is locked... Maybe there is a key somewhere.");
             }
             break;
-        case "statue":
-            showMessage(heroSpeech, "hey that sure is a statue... I'm glad it doesn't speak because I have a really serious phobia foor talking statues!", heroAudio);
+        case "goldenDragonTrigger":
+            showMessage(heroSpeech, "hey that sure is a goldenDragon... I'm glad it doesn't speak because I have a really serious phobia foor talking goldenDragon!", heroAudio);
             setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
             setTimeout(showMessage, 4 * sec, counterSpeech, "I actually CAN talk you know?", counterAudio);
             setTimeout(showMessage, 8 * sec, heroSpeech, "WHAAAAAAAA!!! NO NO NO I'M SO SCARED!"), heroAudio;
             setTimeout(showMessage, 12 * sec, counterSpeech, "whoah chill dude, I am just going to help you... If you need a key, look by the graves.", counterAudio);
             setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
-            // console.log("TIS I, THE TALKING STATUE! oh, what? where the key is? oh yeah it lies with the graves...");
+            // console.log("TIS I, THE TALKING goldenDragon! oh, what? where the key is? oh yeah it lies with the graves...");
             break;
         default:
             break;
