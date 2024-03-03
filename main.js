@@ -4,7 +4,7 @@ document.getElementById("mainTitle").innerText = "Point and Click adventure game
 let gameState = {
     "inventory": [],
     "coinPickedUp": false,
-    "keyPickedUp": false
+    "lostDragonFound": false
 }
 
 localStorage.removeItem("gameState");
@@ -46,8 +46,8 @@ const tree1 = document.getElementById("squareTree");
 // in dialog
 let checkDialog = false;
 
-if(gameState.keyPickedUp) {
-    document.getElementById("key").remove();
+if(gameState.lostDragonFound) {
+    document.getElementById("lostDragon").remove(); 
 }
 
 updateInventory(gameState.inventory, inventoryList);
@@ -57,55 +57,57 @@ gameWindow.onclick = function (e) {
     var x = e.clientX - rect.left;
     var y = e.clientY - rect.top;
 
-    //TODO: calc offset based on character size
-    //TODO: making dialog functionality
-
-
-
     if (checkDialog = true)
         if (e.target.id !== "heroImage") {
             mainCharacter.style.left = x - offsetCharacter + "px";
             mainCharacter.style.top = y - offsetCharacter + "px";
         }
     switch (e.target.id) {
-        case "key":
-            console.log("pick up key")
-            document.getElementById("key").remove();
-            changeInventory('key', "add");
-            gameState.keyPickedUp = true;
+        case "lostDragonTrigger":
+            console.log("pick up lostDragonTrigger")
+            document.getElementById("lostDragon").remove();
+            changeInventory('lostDragonTrigger', "add");
+            gameState.lostDragonFound = true;
             saveGameState(gameState);
             break;
-        case "well":
-            if (gameState.coinPickedUp == false) {
-                changeInventory("coin", "add");
-                gameState.coinPickedUp = true;
-            } else {
-                console.log("There are no more coins in this well!");
-            }
-            break;
-        case "doorWizardHut":
-            if (checkItem("key")) {
-                showMessage(heroSpeech, "YIPPEE the door is open!!", heroAudio);
-                console.log("YIPPEE the door is open!!");
-            } else if (checkItem("coin")) {
-                changeInventory("coin", "remove");  // FIX THIS BIT
-                console.log("(you try to open the locked door with a coin, but it just breaks the coin) Oh no, my coin D:", heroAudio);
-            } else {
-                showMessage(heroSpeech, "dammit, this door is locked... Maybe there is a key somewhere.", heroAudio);
-                console.log("dammit, this door is locked... Maybe there is a key somewhere.");
-            }
-            break;
+        // case "well":
+        //     if (gameState.coinPickedUp == false) {
+        //         changeInventory("coin", "add");
+        //         gameState.coinPickedUp = true;
+        //     } else {
+        //         console.log("There are no more coins in this well!");
+        //     }
+        //     break;
         case "goldenDragonTrigger":
-            showMessage(heroSpeech, "Hi there!... oh, why do you look so sad?", heroAudio);
-            setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
-            setTimeout(showMessage, 4 * sec, counterSpeech, "oh, hello, I lost my kid. Can you help me find him?", counterAudio);
-            setTimeout(showMessage, 8 * sec, counterAvatar, "He is small, bronze and a bit silly"), heroAudio;
-            setTimeout(showMessage, 12 * sec, counterSpeech, "I can sure help you!", counterAudio);
-            setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
-            // console.log("TIS I, THE TALKING goldenDragon! oh, what? where the key is? oh yeah it lies with the graves...");
+            if (checkItem("lostDragonTrigger")) {
+                showMessage(heroSpeech, "here he is!", heroAudio);
+                console.log("you give the baby back to the dragon");
+                changeInventory('lostDragonTrigger', "remove");
+            } else if (checkItem("redMushRoomTriggerOne", "redMushRoomTriggerTwo", "redMushRoomTriggerThree", "redMushRoomTriggerFour", "gardenBerryTriggerTop", "gardenBerryTriggerBottom")) {
+                showMessage(counterSpeech, "Hey this is not my child?! but thanks for the food tho... scrumf scrumf I phwas hungphry", counterAudio);
+                changeInventory("redMushRoomTriggerOne", "redMushRoomTriggerTwo", "redMushRoomTriggerThree", "redMushRoomTriggerFour", "gardenBerryTriggerTop", "gardenBerryTriggerBottom", "remove");  
+                console.log("Hey this is not my child?! but thanks for the food tho... scrumf scrumf I phwas hungphry", heroAudio);
+            } else {
+                showMessage(heroSpeech, "Hi there!... oh, why do you look so sad?", heroAudio);
+                setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
+                setTimeout(showMessage, 4 * sec, counterSpeech, "oh, hello, I lost my kid. Can you help me find him?", counterAudio);
+                setTimeout(showMessage, 8 * sec, counterAvatar, "He is small, bronze and a bit silly"), heroAudio;
+                setTimeout(showMessage, 12 * sec, counterSpeech, "I can sure help you!", counterAudio);
+                setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
+            }
             break;
-        default:
-            break;
+            
+        // case "goldenDragonTrigger":
+        //     showMessage(heroSpeech, "Hi there!... oh, why do you look so sad?", heroAudio);
+        //     setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
+        //     setTimeout(showMessage, 4 * sec, counterSpeech, "oh, hello, I lost my kid. Can you help me find him?", counterAudio);
+        //     setTimeout(showMessage, 8 * sec, counterAvatar, "He is small, bronze and a bit silly"), heroAudio;
+        //     setTimeout(showMessage, 12 * sec, counterSpeech, "I can sure help you!", counterAudio);
+        //     setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
+        //     // console.log("TIS I, THE TALKING goldenDragon! oh, what? where the lostDragonTrigger is? oh yeah it lies with the graves...");
+        //     break;
+        // default:
+        //     break;
     }
 
     switch (e.target.id){
@@ -121,17 +123,23 @@ gameWindow.onclick = function (e) {
         case "redMushRoomTriggerFour":
             console.log ("hmmmm yummy in my tummy, shrooms");
         break;
-        case "lostDragonTrigger":
-            console.log ("this is the lost dragon");
-        break;
-        case "goldenDragonTrigger":
-            console.log ("mruwah I'm a big dragon");
-        break;
+        // case "lostDragonTrigger":
+        //     console.log ("this is the lost dragon");
+        // break;
+        // case "goldenDragonTrigger":
+        //     console.log ("mruwah I'm a big dragon");
+        // break;
         case "gardenBerryTriggerTop":
             console.log ("this is the top berry bush");
         break;
         case "gardenBerryTriggerBottom":
             console.log ("this is the bottom berry bush");
+        break;
+        case "roadSignTriggerTop":
+            console.log ("go here right to find the gold dragon")
+        break;
+        case "roadSignTriggerBottom":
+            console.log ("go here left and follow the path to find the garden and home")
         break;
     }
 }

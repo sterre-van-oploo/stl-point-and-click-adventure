@@ -5,6 +5,7 @@ body {
     font-family: monospace;
     background-color: #1b1815;
     color:#a0978d;
+
 }
 
 #title {
@@ -17,12 +18,14 @@ body {
     height: 608px;
     grid-column-start: 2;
     grid-row-start: 2;
-    position: relative;
+    position: relative;    
+    color:#a0978d;
+    border-style:solid ;
 }
 
 #inventoryBox {
-    width: 140px;
-    height: 50px;
+    width: 170px;
+    height: 70px;
     background-color: #3f3530;
     top: 10px;
     right: 10px;
@@ -95,7 +98,7 @@ body {
 #brownBar{
     bottom: 0px;
     height: 35px;
-    width: 800px;
+    width: 799px;
     background-color: #3f3530;
     opacity: 80%; 
     /* border-top: #a0978d; */
@@ -206,19 +209,34 @@ body {
     z-index: 1;
 }
 
-
-
-
-
-
 #hero {
-    top: 390px;
-    left: 267px;
+    top: 57px;
+    left: 440px;
     width: 32px;
     height: 32px;
     transition: all 1s ease-in-out;
     z-index: 2;
 }
+
+#roadSignTriggerTop{
+    width: 38px;
+    height: 19px;
+    left: 209px;
+    top: 271px;
+    /* opacity: 60%;
+    background-color: #ff0000; */
+}
+
+#roadSignTriggerBottom{
+    width: 38px;
+    height: 19px;
+    left: 209px;
+    top: 290px;
+    /* opacity: 60%;
+    background-color: #ff0000; */
+}
+
+
 
 #tileMap {}
 
