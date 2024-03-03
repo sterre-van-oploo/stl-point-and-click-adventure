@@ -4,7 +4,8 @@ document.getElementById("mainTitle").innerText = "Point and Click adventure game
 let gameState = {
     "inventory": [],
     "coinPickedUp": false,
-    "lostDragonFound": false
+    "lostDragonFound": false,
+    "mushroomsPickedUp": false,
 }
 
 localStorage.removeItem("gameState");
@@ -70,6 +71,7 @@ gameWindow.onclick = function (e) {
             gameState.lostDragonFound = true;
             saveGameState(gameState);
             break;
+
         // case "well":
         //     if (gameState.coinPickedUp == false) {
         //         changeInventory("coin", "add");
@@ -108,6 +110,46 @@ gameWindow.onclick = function (e) {
         //     break;
         // default:
         //     break;
+    }
+
+    switch (e.target.id) {
+        case "redMushRoomTriggerOne":
+            console.log("pick up a mushroom")
+            // document.getElementById("lostDragon").remove(); // If I have time to spare I can make it so the mushrooms actually dissapear
+            changeInventory('redMushRoomTriggerOne', "add");
+            gameState.mushroomsPickedUp = true;
+            saveGameState(gameState);
+            break;
+    }
+    
+    switch (e.target.id) {
+        case "redMushRoomTriggerTwo":
+            console.log("pick up a mushroom")
+            // document.getElementById("lostDragon").remove(); // If I have time to spare I can make it so the mushrooms actually dissapear
+            changeInventory('redMushRoomTriggerOne', "add");
+            gameState.mushroomsPickedUp = true;
+            saveGameState(gameState);
+            break;
+    }
+ 
+    switch (e.target.id) {
+        case "redMushRoomTriggerThree":
+            console.log("pick up a mushroom")
+            // document.getElementById("lostDragon").remove(); // If I have time to spare I can make it so the mushrooms actually dissapear
+            changeInventory('redMushRoomTriggerOne', "add");
+            gameState.mushroomsPickedUp = true;
+            saveGameState(gameState);
+            break;
+    }
+
+    switch (e.target.id) {
+        case "redMushRoomTriggerFour":
+            console.log("pick up a mushroom")
+            // document.getElementById("lostDragon").remove(); // If I have time to spare I can make it so the mushrooms actually dissapear
+            changeInventory('redMushRoomTriggerOne', "add");
+            gameState.mushroomsPickedUp = true;
+            saveGameState(gameState);
+            break;
     }
 
     switch (e.target.id){
