@@ -1,4 +1,4 @@
-document.getElementById("mainTitle").innerText = "Point and Click adventure game";
+document.getElementById("mainTitle").innerText = "the dragon's touch";
 
 // Game State
 let gameState = {
@@ -81,6 +81,11 @@ gameWindow.onclick = function (e) {
                 showMessage(heroSpeech, "here he is!", heroAudio);
                 console.log("you give the baby back to the dragon");
                 changeInventory('lostDragonTrigger', "remove");
+                setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
+                setTimeout(showMessage, 4 * sec, counterSpeech, "MY BABY! thank you so much!", counterAudio);
+                // showMessage(counterSpeech, "I hate to ask more but I was making soup", counterAudio);
+                // showMessage(counterSpeech, "And I just need mushrooms and some berries from the garden", counterAudio);                
+                // showMessage(counterSpeech, "could be get thos as well please?", counterAudio);
             } else if (checkItem("redMushRoomTriggerOne", "redMushRoomTriggerTwo", "redMushRoomTriggerThree", "redMushRoomTriggerFour", "gardenBerryTriggerTop", "gardenBerryTriggerBottom")) {
                 showMessage(counterSpeech, "Hey this is not my child?! but thanks for the food tho... scrumf scrumf I phwas hungphry", counterAudio);
                 changeInventory("redMushRoomTriggerOne", "redMushRoomTriggerTwo", "redMushRoomTriggerThree", "redMushRoomTriggerFour", "gardenBerryTriggerTop", "gardenBerryTriggerBottom", "remove");  
@@ -89,20 +94,20 @@ gameWindow.onclick = function (e) {
                 showMessage(heroSpeech, "Hi there!... oh, why do you look so sad?", heroAudio);
                 setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
                 setTimeout(showMessage, 4 * sec, counterSpeech, "oh, hello, I lost my kid. Can you help me find him?", counterAudio);
+                setTimeout(showMessage, 8 * sec, heroSpeech, "yeah ofcourse, what does he look like?", heroAudio);
                 setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
-                setTimeout(showMessage, 8 * sec, counterAvatar, "He is small, bronze and a bit silly", counterAudio);
-                setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
-                setTimeout(showMessage, 12 * sec, heroSpeech, "I can sure help you!", heroAudio);
+                setTimeout(showMessage, 12 * sec, counterAvatar, "He is small, bronze and a bit silly", counterAudio);
+                setTimeout(showMessage, 16 * sec, heroSpeech, "I can sure help you!", heroAudio);
             }
             break;
     }
 
-        showMessage(heroSpeech, "Hey a statue.. Looks okay.", heroAudio);
-        setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
-        setTimeout(showMessage, 4.1 * sec, counsterSpeech, "I can talk you know..", counterAudio);
-        setTimeout(showMessage, 8.1 * sec, heroSpeech, "Wait what? That's not normal", heroAudio);
-        setTimeout(showMessage, 12.1 * sec, counsterSpeech, "Just shut up.. You want a key.. Check the graves.", counterAudio);
-        setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
+        // showMessage(heroSpeech, "Hey a statue.. Looks okay.", heroAudio);
+        // setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
+        // setTimeout(showMessage, 4.1 * sec, counsterSpeech, "I can talk you know..", counterAudio);
+        // setTimeout(showMessage, 8.1 * sec, heroSpeech, "Wait what? That's not normal", heroAudio);
+        // setTimeout(showMessage, 12.1 * sec, counsterSpeech, "Just shut up.. You want a key.. Check the graves.", counterAudio);
+        // setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
 
 
 
@@ -286,7 +291,7 @@ function updateInventory(inventory, inventoryList) {
 //     targetSound.play();
 //     targetBubble.innerText = message;
 //     targetBubble.style.opacity = 1;
-    setTimeout(hideMessage, 4 * sec, targetBubble, targetSound) //GITHUB FIX HIDEMESSAGE
+    mainTitle(hideMessage, 4 * sec, targetBubble, targetSound) //GITHUB FIX HIDEMESSAGE
 // }
 
 function showMessage(targetBubble, message, targetSound) {
