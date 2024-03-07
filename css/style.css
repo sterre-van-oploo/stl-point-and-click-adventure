@@ -131,6 +131,7 @@ body {
     height: 17px;
     left: 417px;
     top: 31px;
+    cursor: pointer;
     /* background-color: #a54f4f; */
 }
 
@@ -139,6 +140,7 @@ body {
     height: 15px;
     left: 769px;
     top: 192px;
+    cursor: pointer;
     /* background-color: #a54f4f; */
 }
 
@@ -147,6 +149,7 @@ body {
     height: 25px;
     left: 767px;
     top: 440px;
+    cursor: pointer;
     /* background-color: #a54f4f; */
 }
 
@@ -155,6 +158,7 @@ body {
     height: 17px;
     left: 580px;
     top: 543px;
+    cursor: pointer;
     /* background-color: #a54f4f; */
 }
 
@@ -163,6 +167,7 @@ body {
     height: 36px;
     left: 594px;
     top: 225px;
+    cursor: pointer;
     /* background-color: #eeff00; */
 }
 
@@ -173,6 +178,7 @@ body {
     top: 493px;
     /* background-color: #bba058; */
     z-index: 2;
+    cursor: pointer;
 }
 
 #gardenBerryTriggerTop{
@@ -180,6 +186,7 @@ body {
     height: 64px;
     left: 5px;
     top: 1px;
+    cursor: pointer;
     /* background-color: #ff0000; */
 }
 
@@ -188,6 +195,7 @@ body {
     height: 64px;
     left: 5px;
     top: 97px;
+    cursor: pointer;
     /* background-color: #ff0000; */
 }
 
@@ -222,6 +230,7 @@ body {
     height: 19px;
     left: 209px;
     top: 271px;
+    /* cursor: pointer; uncomment this to use the road signs */
     /* opacity: 60%;
     background-color: #ff0000; */
 }
@@ -231,6 +240,7 @@ body {
     height: 19px;
     left: 209px;
     top: 290px;
+    /* cursor: pointer; uncomment this to use the road signs */
     /* opacity: 60%;
     background-color: #ff0000; */
 }

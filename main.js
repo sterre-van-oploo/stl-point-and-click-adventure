@@ -1,4 +1,4 @@
-document.getElementById("mainTitle").innerText = "the dragon's touch";
+document.getElementById("mainTitle").innerText = "silly dragon game";
 
 // Game State
 let gameState = {
@@ -71,33 +71,34 @@ gameWindow.onclick = function (e) {
         case "lostDragonTrigger":
             console.log("pick up lostDragonTrigger")
             document.getElementById("lostDragon").remove();
-            changeInventory('lostDragonTrigger', "add");//QUESTION QUESTION QUESTION!!! Is there a way that I can rename just the thing that goes in the inventory? (ALL THE QUESTIONS AB THIS WILL BE MARKED WITH A *)
+            // showMessage(heroSpeech);
+            changeInventory('the child', "add");//QUESTION QUESTION QUESTION!!! Is there a way that I can rename just the thing that goes in the inventory? (ALL THE QUESTIONS AB THIS WILL BE MARKED WITH A *)
             gameState.lostDragonFound = true;
             saveGameState(gameState);
             break;
 
         case "goldenDragonTrigger":
-            if (checkItem("lostDragonTrigger")) {
+            if (checkItem("the child")) {
                 showMessage(heroSpeech, "here he is!", heroAudio);
                 console.log("you give the baby back to the dragon");
-                changeInventory('lostDragonTrigger', "remove");
+                changeInventory('the child', "remove");
                 setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
                 setTimeout(showMessage, 4 * sec, counterSpeech, "MY BABY! thank you so much!", counterAudio);
                 // showMessage(counterSpeech, "I hate to ask more but I was making soup", counterAudio);
                 // showMessage(counterSpeech, "And I just need mushrooms and some berries from the garden", counterAudio);                
                 // showMessage(counterSpeech, "could be get thos as well please?", counterAudio);
-            } else if (checkItem("redMushRoomTriggerOne", "redMushRoomTriggerTwo", "redMushRoomTriggerThree", "redMushRoomTriggerFour", "gardenBerryTriggerTop", "gardenBerryTriggerBottom")) {
+            } else if (checkItem("mushroom", "berry", "vegetable")) {
                 showMessage(counterSpeech, "Hey this is not my child?! but thanks for the food tho... scrumf scrumf I phwas hungphry", counterAudio);
-                changeInventory("redMushRoomTriggerOne", "redMushRoomTriggerTwo", "redMushRoomTriggerThree", "redMushRoomTriggerFour", "gardenBerryTriggerTop", "gardenBerryTriggerBottom", "remove");  
-                console.log("Hey this is not my child?! but thanks for the food tho... scrumf scrumf hmm I phwas hungphry", heroAudio);
+                changeInventory("mushroom", "berry", "remove");  
+                // console.log("Hey this is not my child?! but thanks for the food tho... scrumf scrumf hmm I phwas hungphry", );
             } else {
                 showMessage(heroSpeech, "Hi there!... oh, why do you look so sad?", heroAudio);
                 setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
                 setTimeout(showMessage, 4 * sec, counterSpeech, "oh, hello, I lost my kid. Can you help me find him?", counterAudio);
                 setTimeout(showMessage, 8 * sec, heroSpeech, "yeah ofcourse, what does he look like?", heroAudio);
-                setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
-                setTimeout(showMessage, 12 * sec, counterAvatar, "He is small, bronze and a bit silly", counterAudio);
+                setTimeout(showMessage, 12 * sec, counterSpeech, "He is small, bronze and a bit silly", counterAudio);
                 setTimeout(showMessage, 16 * sec, heroSpeech, "I can sure help you!", heroAudio);
+                setTimeout(function () { counterAvatar.style.opacity = 0; }, 20 * sec);
             }
             break;
     }
@@ -147,7 +148,7 @@ switch (e.target.id) {
         case "redMushRoomTriggerOne":
             console.log("pick up a mushroom")
             // If I have time to spare I can make it so the mushrooms actually dissapear
-            changeInventory('redMushRoomTriggerOne', "add"); //*
+            changeInventory('mushroom', "add"); 
             gameState.mushroomsPickedUp = true;
             saveGameState(gameState);
             break;
@@ -157,7 +158,7 @@ switch (e.target.id) {
         case "redMushRoomTriggerTwo":
             console.log("pick up a mushroom")
             // If I have time to spare I can make it so the mushrooms actually dissapear
-            changeInventory('redMushRoomTriggerOne', "add");//*
+            changeInventory('mushroom', "add");
             gameState.mushroomsPickedUp = true;
             saveGameState(gameState);
             break;
@@ -167,7 +168,7 @@ switch (e.target.id) {
         case "redMushRoomTriggerThree":
             console.log("pick up a mushroom")
             // If I have time to spare I can make it so the mushrooms actually dissapear
-            changeInventory('redMushRoomTriggerOne', "add");//*
+            changeInventory('mushroom', "add");
             gameState.mushroomsPickedUp = true;
             saveGameState(gameState);
             break;
@@ -177,7 +178,7 @@ switch (e.target.id) {
         case "redMushRoomTriggerFour":
             console.log("pick up a mushroom")
             // If I have time to spare I can make it so the mushrooms actually dissapear
-            changeInventory('redMushRoomTriggerOne', "add");//*
+            changeInventory('mushroom', "add");
             gameState.mushroomsPickedUp = true;
             saveGameState(gameState);
             break;
@@ -186,7 +187,7 @@ switch (e.target.id) {
     switch (e.target.id) {
         case "gardenBerryTriggerTop":
             console.log("you pick a berry")
-            changeInventory('gardenBerryTriggerTop', "add");//*
+            changeInventory('berry', "add");
             gameState.gardenBerry = true; 
             saveGameState(gameState);
             break;
@@ -195,7 +196,7 @@ switch (e.target.id) {
     switch (e.target.id) {
         case "gardenBerryTriggerBottom":
             console.log("you pick a berry")
-            changeInventory('gardenBerryTriggerBottom', "add");//*
+            changeInventory('vegetable', "add");
             gameState.gardenBerry = true;
             saveGameState(gameState);
             break;
@@ -286,13 +287,13 @@ function updateInventory(inventory, inventoryList) {
  * @param {string} message 
  * @param {getElementById} targetSound
  */
-// function showMessage(targetBubble, message, targetSound) {
-//     targetSound.currentTime = 0;    
-//     targetSound.play();
-//     targetBubble.innerText = message;
-//     targetBubble.style.opacity = 1;
-    mainTitle(hideMessage, 4 * sec, targetBubble, targetSound) //GITHUB FIX HIDEMESSAGE
-// }
+function showMessage(targetBubble, message, targetSound) {
+    targetSound.currentTime = 0;    
+    targetSound.play();
+    targetBubble.innerText = message;
+    targetBubble.style.opacity = 1;
+    mainTitle(hideMessage, 4 * sec, targetBubble, targetSound)
+}
 
 function showMessage(targetBubble, message, targetSound) {
     if (targetSound && typeof targetSound.play === 'function') {
