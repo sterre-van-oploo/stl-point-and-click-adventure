@@ -72,7 +72,7 @@ gameWindow.onclick = function (e) {
             console.log("pick up lostDragonTrigger")
             document.getElementById("lostDragon").remove();
             // showMessage(heroSpeech);
-            changeInventory('the child', "add");//QUESTION QUESTION QUESTION!!! Is there a way that I can rename just the thing that goes in the inventory? (ALL THE QUESTIONS AB THIS WILL BE MARKED WITH A *)
+            changeInventory('the child', "add");
             gameState.lostDragonFound = true;
             saveGameState(gameState);
             break;
@@ -87,10 +87,24 @@ gameWindow.onclick = function (e) {
                 // showMessage(counterSpeech, "I hate to ask more but I was making soup", counterAudio);
                 // showMessage(counterSpeech, "And I just need mushrooms and some berries from the garden", counterAudio);                
                 // showMessage(counterSpeech, "could be get thos as well please?", counterAudio);
+            // } else if (checkItem("mushroom")) {
+            //     showMessage(counterSpeech, "Hey this is not my child?! but thanks for the food tho... scrumf scrumf I phwas hungphry", counterAudio);
+            //     changeInventory('mushroom', 'remove');
+            // } else if (checkItem("berry")) {
+            //     showMessage(counterSpeech, "Hey this is not my child?! but thanks for the food tho... scrumf scrumf I phwas hungphry", counterAudio);
+            //     changeInventory('berry', 'remove');
+            // } else if (checkItem("vegetable")) {
+            //     showMessage(counterSpeech, "Hey this is not my child?! but thanks for the food tho... scrumf scrumf I phwas hungphry", counterAudio);
+            //     changeInventory('vegetable', 'remove');
             } else if (checkItem("mushroom", "berry", "vegetable")) {
-                showMessage(counterSpeech, "Hey this is not my child?! but thanks for the food tho... scrumf scrumf I phwas hungphry", counterAudio);
-                changeInventory("mushroom", "berry", "remove");  
-                // console.log("Hey this is not my child?! but thanks for the food tho... scrumf scrumf hmm I phwas hungphry", );
+                setTimeout(function () { counterAvatar.style.opacity = 1; }, 0 * sec);
+                showMessage(counterSpeech, "This is not my child?! thanks for the food tho...", counterAudio);                
+                setTimeout(1 * sec, heroSpeech, "", heroAudio);
+                setTimeout(showMessage, 4 * sec, counterSpeech, "scrumf scrumf I phwas hungphry", counterAudio);
+                setTimeout(function () { counterAvatar.style.opacity = 0; }, 9 * sec);
+                changeInventory('mushroom', 'remove');
+                changeInventory('berry', 'remove');
+                changeInventory('vegetable', 'remove');            
             } else {
                 showMessage(heroSpeech, "Hi there!... oh, why do you look so sad?", heroAudio);
                 setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
@@ -98,42 +112,10 @@ gameWindow.onclick = function (e) {
                 setTimeout(showMessage, 8 * sec, heroSpeech, "yeah ofcourse, what does he look like?", heroAudio);
                 setTimeout(showMessage, 12 * sec, counterSpeech, "He is small, bronze and a bit silly", counterAudio);
                 setTimeout(showMessage, 16 * sec, heroSpeech, "I can sure help you!", heroAudio);
-                setTimeout(function () { counterAvatar.style.opacity = 0; }, 20 * sec);
+                setTimeout(function () { counterAvatar.style.opacity = 0; }, 21 * sec);
             }
             break;
     }
-
-        // showMessage(heroSpeech, "Hey a statue.. Looks okay.", heroAudio);
-        // setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
-        // setTimeout(showMessage, 4.1 * sec, counsterSpeech, "I can talk you know..", counterAudio);
-        // setTimeout(showMessage, 8.1 * sec, heroSpeech, "Wait what? That's not normal", heroAudio);
-        // setTimeout(showMessage, 12.1 * sec, counsterSpeech, "Just shut up.. You want a key.. Check the graves.", counterAudio);
-        // setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
-
-
-
-
-//     switch (e.target.id) {
-//     case "goldenDragonTrigger":
-//         if (checkItem("lostDragonTrigger")) {
-//             showMessage(heroSpeech, "here he is!", heroAudio);
-//             console.log("you give the baby back to the dragon");
-//             changeInventory('lostDragonTrigger', "remove");
-//         } else if (checkItem("redMushRoomTriggerOne", "redMushRoomTriggerTwo", "redMushRoomTriggerThree", "redMushRoomTriggerFour", "gardenBerryTriggerTop", "gardenBerryTriggerBottom")) {
-//             showMessage(counterSpeech, "Hey this is not my child?! but thanks for the food tho... scrumf scrumf I phwas hungphry", counterAudio);
-//             changeInventory("redMushRoomTriggerOne", "redMushRoomTriggerTwo", "redMushRoomTriggerThree", "redMushRoomTriggerFour", "gardenBerryTriggerTop", "gardenBerryTriggerBottom", "remove");  
-//             console.log("Hey this is not my child?! but thanks for the food tho... scrumf scrumf I phwas hungphry", heroAudio);
-//         } else {
-//             showMessage(heroSpeech, "Hi there!... oh, why do you look so sad?", heroAudio);
-//             setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
-//             setTimeout(showMessage, 4 * sec, counterSpeech, "oh, hello, I lost my kid. Can you help me find him?", counterAudio);
-//             setTimeout(showMessage, 8 * sec, counterAvatar, "He is small, bronze and a bit silly"), counterAudio;
-//             setTimeout(showMessage, 12 * sec, heroSpeech, "I can sure help you!", heroAudio);
-//             setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
-//         }
-//         break;
-// }
-
 
 switch (e.target.id) {
     case "roadSignTriggerTop":
@@ -238,8 +220,8 @@ switch (e.target.id) {
 
 /**
  * Add or remove item in inventory
- * @param {string} itemName 
- * @param {string} action 
+ * @param {string} itemName
+ * @param {string} action
  */
 function changeInventory(itemName, action) {
     if (itemName == null || action == null) {
@@ -249,7 +231,9 @@ function changeInventory(itemName, action) {
 
     switch (action) {
         case 'add':
-            gameState.inventory.push(itemName);
+            if (!gameState.inventory.includes(itemName)) {
+                gameState.inventory.push(itemName);
+            }
             break;
         case 'remove':
             gameState.inventory = gameState.inventory.filter(function (newInventory) {
@@ -257,7 +241,6 @@ function changeInventory(itemName, action) {
             });
             document.getElementById("inv-" + itemName).remove();
             break;
-
     }
     updateInventory(gameState.inventory, inventoryList);
 }
