@@ -7,7 +7,6 @@ let gameState = {
     "lostDragonFound": false,
     "mushroomsPickedUp": false,
     "gardenBerry" : false,
-
 }
 
 localStorage.removeItem("gameState");
@@ -50,9 +49,21 @@ const tree1 = document.getElementById("squareTree");
 let checkDialog = false;
 
 
-if(gameState.lostDragonFound) {
+const lostDragonTrigger = document.getElementById("lostDragonTrigger");
+
+// with this you can pick up the baby dragon and it makes the toot toot sound
+lostDragonTrigger.addEventListener("click", function() {
+    const lostDragonAudio = document.getElementById("lostDragonAudio");
+    lostDragonAudio.currentTime = 0; 
+    lostDragonAudio.play();
+
     document.getElementById("lostDragon").remove(); 
-}
+    console.log("pick up lostDragonTrigger");
+    changeInventory('the child', "add");
+    gameState.lostDragonFound = true;
+    saveGameState(gameState);
+});
+
 
 updateInventory(gameState.inventory, inventoryList);
 
@@ -67,16 +78,16 @@ gameWindow.onclick = function (e) {
             mainCharacter.style.top = y - offsetCharacter + "px";
         }
 
+// this is puts the baby in your inventory
     switch (e.target.id) {
         case "lostDragonTrigger":
             console.log("pick up lostDragonTrigger")
-            document.getElementById("lostDragon").remove();
-            // showMessage(heroSpeech);
             changeInventory('the child', "add");
             gameState.lostDragonFound = true;
             saveGameState(gameState);
             break;
 
+// if you have the child, trigger the found child dialogue, if not, is there food in the inventory, trigger that dialogue, if not, trigger the starter dialogue.
         case "goldenDragonTrigger":
             if (checkItem("the child")) {
                 showMessage(heroSpeech, "here he is!", heroAudio);
@@ -84,18 +95,10 @@ gameWindow.onclick = function (e) {
                 changeInventory('the child', "remove");
                 setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
                 setTimeout(showMessage, 4 * sec, counterSpeech, "MY BABY! thank you so much!", counterAudio);
+                setTimeout(function () { counterAvatar.style.opacity = 0; }, 9 * sec);
                 // showMessage(counterSpeech, "I hate to ask more but I was making soup", counterAudio);
                 // showMessage(counterSpeech, "And I just need mushrooms and some berries from the garden", counterAudio);                
                 // showMessage(counterSpeech, "could be get thos as well please?", counterAudio);
-            // } else if (checkItem("mushroom")) {
-            //     showMessage(counterSpeech, "Hey this is not my child?! but thanks for the food tho... scrumf scrumf I phwas hungphry", counterAudio);
-            //     changeInventory('mushroom', 'remove');
-            // } else if (checkItem("berry")) {
-            //     showMessage(counterSpeech, "Hey this is not my child?! but thanks for the food tho... scrumf scrumf I phwas hungphry", counterAudio);
-            //     changeInventory('berry', 'remove');
-            // } else if (checkItem("vegetable")) {
-            //     showMessage(counterSpeech, "Hey this is not my child?! but thanks for the food tho... scrumf scrumf I phwas hungphry", counterAudio);
-            //     changeInventory('vegetable', 'remove');
             } else if (checkItem("mushroom", "berry", "vegetable")) {
                 setTimeout(function () { counterAvatar.style.opacity = 1; }, 0 * sec);
                 showMessage(counterSpeech, "This is not my child?! thanks for the food tho...", counterAudio);                
@@ -117,19 +120,24 @@ gameWindow.onclick = function (e) {
             break;
     }
 
+// raodsign dialogue
 switch (e.target.id) {
     case "roadSignTriggerTop":
-        console.log ("go here right to find the gold dragon")
+        showMessage(heroSpeech, "let's see what this says,", heroAudio);                
+        setTimeout(1 * sec, counterSpeech, "", counterAudio);
+        setTimeout(showMessage, 4 * sec, heroSpeech, "'go here right to find the gold dragon'", heroAudio);
     break;
     case "roadSignTriggerBottom":
-        console.log ("go here left and follow the path to find the garden and home")
+        showMessage(heroSpeech, "let's see what this says,", heroAudio);                
+        setTimeout(1 * sec, counterSpeech, "", counterAudio);
+        setTimeout(showMessage, 4 * sec, heroSpeech, "'follow the path to find the garden and the camp'", heroAudio);    
     break;
 }
-        
+
+// picking up the items
     switch (e.target.id) {
         case "redMushRoomTriggerOne":
             console.log("pick up a mushroom")
-            // If I have time to spare I can make it so the mushrooms actually dissapear
             changeInventory('mushroom', "add"); 
             gameState.mushroomsPickedUp = true;
             saveGameState(gameState);
@@ -139,7 +147,6 @@ switch (e.target.id) {
     switch (e.target.id) {
         case "redMushRoomTriggerTwo":
             console.log("pick up a mushroom")
-            // If I have time to spare I can make it so the mushrooms actually dissapear
             changeInventory('mushroom', "add");
             gameState.mushroomsPickedUp = true;
             saveGameState(gameState);
@@ -149,7 +156,6 @@ switch (e.target.id) {
     switch (e.target.id) {
         case "redMushRoomTriggerThree":
             console.log("pick up a mushroom")
-            // If I have time to spare I can make it so the mushrooms actually dissapear
             changeInventory('mushroom', "add");
             gameState.mushroomsPickedUp = true;
             saveGameState(gameState);
@@ -159,7 +165,6 @@ switch (e.target.id) {
     switch (e.target.id) {
         case "redMushRoomTriggerFour":
             console.log("pick up a mushroom")
-            // If I have time to spare I can make it so the mushrooms actually dissapear
             changeInventory('mushroom', "add");
             gameState.mushroomsPickedUp = true;
             saveGameState(gameState);
@@ -184,6 +189,7 @@ switch (e.target.id) {
             break;
     }
 
+// console.log tests
     switch (e.target.id){
         case "redMushRoomTriggerOne":
             console.log ("hmmmm yummy in my tummy, shrooms");
@@ -197,12 +203,6 @@ switch (e.target.id) {
         case "redMushRoomTriggerFour":
             console.log ("hmmmm yummy in my tummy, shrooms");
         break;
-        // case "lostDragonTrigger":
-        //     console.log ("this is the lost dragon");
-        // break;
-        // case "goldenDragonTrigger":
-        //     console.log ("mruwah I'm a big dragon");
-        // break;
         case "gardenBerryTriggerTop":
             console.log ("this is the top berry bush");
         break;
@@ -229,6 +229,7 @@ function changeInventory(itemName, action) {
         return;
     }
 
+// a switch case to add or remove items in the array called inventory
     switch (action) {
         case 'add':
             if (!gameState.inventory.includes(itemName)) {
@@ -265,7 +266,7 @@ function updateInventory(inventory, inventoryList) {
 }
 
 /**
- * if will show dialog and trigger sound.
+ * this will show the dialogue and trigger the sound
  * @param {getElementById} targetBubble 
  * @param {string} message 
  * @param {getElementById} targetSound
@@ -289,7 +290,7 @@ function showMessage(targetBubble, message, targetSound) {
     setTimeout(hideMessage, 4 * sec, targetBubble, targetSound);
 }
 /**
- *                                                   
+ * the name hideMessage kinda says it all                                                   
  * @param {getElementById} targetBubble 
  * @param {getElementById} targetSound 
  */
@@ -305,7 +306,3 @@ function hideMessage(targetBubble, targetSound) {
 function saveGameState(gameState){
     localStorage.gameState = JSON.stringify(gameState)
 };
-
-// ITEM MUST INTERACT WITH OTHER ITEMS
-// the dragon: its okay the soup will warm in my stomach
-// you are going to cook the soup over the fire in the camp

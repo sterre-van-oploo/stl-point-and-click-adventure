@@ -4,6 +4,7 @@ body {
     grid-template-rows: auto 608px auto;
     font-family: monospace;
     background-color: #1b1815;
+    
     color:#a0978d;
 }
 
@@ -71,12 +72,10 @@ body {
     top: 7px;
     border-radius: 10px;
     padding: 5px;
-    background-color: #d2cabf;
+    background-color: #cac3bc;
     opacity: 0;
-
 }
 
-/* ! this avatar image still needs to be drawn but I don't feel like drawing rn */
 #counterAvatar {    
     width: 72px;
     height: 68px;
@@ -100,30 +99,10 @@ body {
     width: 799px;
     background-color: #3f3530;
     opacity: 80%; 
-    /* border-top: #a0978d; */
-    border-top:#a0978d;
+    border-top:#a0978d; 
     border-style: solid;
     z-index: 0;
 }
-
-/* #squareTree {
-    width: 64px;
-    height: 64px;
-    background-color: #00ff00;
-    left: 400px;
-    top: 150px;
-    opacity: 1;
-} */
-
-/* #key {
-    width: 32px;
-    height: 32px;
-    left: 23px;
-    top: 493px;
-    opacity: 1;
-    transition: all 1s ease-in-out;
-    background-color: aqua;
-} */
 
 /* !!!ALL TRIGGERS */
 #redMushRoomTriggerOne {
@@ -132,7 +111,6 @@ body {
     left: 417px;
     top: 31px;
     cursor: pointer;
-    /* background-color: #a54f4f; */
 }
 
 #redMushRoomTriggerTwo{
@@ -141,7 +119,6 @@ body {
     left: 769px;
     top: 192px;
     cursor: pointer;
-    /* background-color: #a54f4f; */
 }
 
 #redMushRoomTriggerThree{
@@ -150,7 +127,6 @@ body {
     left: 767px;
     top: 440px;
     cursor: pointer;
-    /* background-color: #a54f4f; */
 }
 
 #redMushRoomTriggerFour {
@@ -159,7 +135,6 @@ body {
     left: 580px;
     top: 543px;
     cursor: pointer;
-    /* background-color: #a54f4f; */
 }
 
 #goldenDragonTrigger{
@@ -168,7 +143,6 @@ body {
     left: 594px;
     top: 225px;
     cursor: pointer;
-    /* background-color: #eeff00; */
 }
 
 #lostDragonTrigger {
@@ -176,7 +150,6 @@ body {
     height: 21px;
     left: 20px;
     top: 493px;
-    /* background-color: #bba058; */
     z-index: 2;
     cursor: pointer;
 }
@@ -187,7 +160,6 @@ body {
     left: 5px;
     top: 1px;
     cursor: pointer;
-    /* background-color: #ff0000; */
 }
 
 #gardenBerryTriggerBottom{
@@ -196,7 +168,6 @@ body {
     left: 5px;
     top: 97px;
     cursor: pointer;
-    /* background-color: #ff0000; */
 }
 
 /* !!!VISUAL NON CLICKEBLE STUFF (IT'S JUST AN ILLUSION) */
@@ -230,9 +201,7 @@ body {
     height: 19px;
     left: 209px;
     top: 271px;
-    /* cursor: pointer; uncomment this to use the road signs */
-    /* opacity: 60%;
-    background-color: #ff0000; */
+    cursor: pointer; 
 }
 
 #roadSignTriggerBottom{
@@ -240,12 +209,8 @@ body {
     height: 19px;
     left: 209px;
     top: 290px;
-    /* cursor: pointer; uncomment this to use the road signs */
-    /* opacity: 60%;
-    background-color: #ff0000; */
+    cursor: pointer;
 }
-
-
 
 #tileMap {}
 
@@ -268,7 +233,7 @@ body {
 .speechBubble{
     border-radius: 10px;
     padding: 5px;
-    background-color: #d2cabf;
+    background-color: #cac3bc;
     user-select: none;
     cursor: default;
 }
